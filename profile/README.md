@@ -48,11 +48,104 @@ Our platform's **distinguishing feature** transforms how aid reaches beneficiari
 
 Here’s what powers KUSAIDIA:
 
-- **Blockchain**: Ethereum-based smart contracts for secure transactions. 🔗
+- **Blockchain**: Celo blockchain for secure, low-cost transactions. 🔗
 - **Frontend**: React.js for a sleek, user-friendly interface. 🎨
 - **Backend**: Django for robust server-side operations. ⚙️
-- **Database**: Postgres for scalable data storage. 🗄️
+- **Database**: PostgreSQL for scalable data storage. 🗄️
 - **DevOps**: Docker for seamless deployment. 🚢
+- **Task Management**: Celery for asynchronous task processing. 🕒
+
+---
+
+## 📚 Technical Documentation
+
+### System Architecture
+
+#### Smart Contract Layer
+1. **VendorRegistry Contract**
+   - Manages vendor verification and profiles.
+   - Tracks vendor transaction history and ratings.
+   - Deployment Address: `0xa5874B0a940BAB6d4dd83bD99d5047b6a7d1bC80`
+
+2. **ProjectRegistry Contract**
+   - Manages aid project lifecycle and milestones.
+   - Links projects with verified vendors.
+   - Tracks project completion status.
+
+3. **PurchaseOrder Contract**
+   - Converts donations into purchase orders.
+   - Handles vendor payments and delivery confirmation.
+
+#### Backend Infrastructure
+1. **Django Application**
+   - Manages contract interactions, APIs, and user authentication.
+2. **Celery Workers**
+   - Handles blockchain synchronization, event monitoring, and transaction processing.
+3. **PostgreSQL Database**
+   - Stores user data, transaction history, and contract state caching.
+
+---
+
+## 🚀 Deployment Process
+
+### Smart Contract Deployment
+1. **Compilation**:
+   - Solidity contracts are compiled during Docker build.
+   - Artifacts (ABI and bytecode) are stored in `contracts/artifacts/`.
+
+2. **Deployment**:
+   - Requires a Celo testnet/mainnet connection.
+   - Deployer account must have sufficient CELO for gas fees.
+   - Gas costs:
+     - VendorRegistry: ~0.0294 CELO
+     - ProjectRegistry: ~0.0397 CELO
+     - PurchaseOrder: Similar range.
+
+---
+
+## 👥 User Interaction Flows
+
+### Vendor Onboarding
+1. **Registration**:
+   - Submit vendor details and pay gas fees in CELO.
+   - Verification process ensures legitimacy.
+2. **Profile Management**:
+   - Update services, prices, and track performance metrics.
+
+### Donor Journey
+1. **Project Discovery**:
+   - Browse projects, view vendor ratings, and track milestones.
+2. **Donation Process**:
+   - Donate in CELO and track fund utilization in real-time.
+
+### Organization Operations
+1. **Project Creation**:
+   - Submit project details, set milestones, and link verified vendors.
+2. **Project Management**:
+   - Track progress, verify deliveries, and release payments.
+
+---
+
+## 🔒 Security Considerations
+
+### Smart Contract Security
+- **Access Control**: Role-based permissions and reentrancy protection.
+- **Transaction Security**: Gas optimization and state validation.
+
+### Platform Security
+- **User Authentication**: Wallet integration and session handling.
+- **Data Protection**: Encryption and strict access controls.
+
+---
+
+## 💡 Future Considerations
+
+### Scalability
+- **Contract Upgrades**: Version management and backward compatibility.
+- **Performance Optimization**: Gas optimization and transaction batching.
+
+### Localization
+- Multilingual support for broader accessibility across Africa.
 
 ---
 
